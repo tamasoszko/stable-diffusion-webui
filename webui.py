@@ -215,7 +215,7 @@ def wait_on_server(demo=None):
             break
 
 
-def api_only():
+def api_only(skip_launch=False):
     initialize()
 
     app = FastAPI()
@@ -225,6 +225,9 @@ def api_only():
     modules.script_callbacks.app_started_callback(None, app)
 
     print(f"Startup time: {startup_timer.summary()}.")
+    if skip_launch:
+        print("Install only, exit.")
+        return
     api.launch(server_name="0.0.0.0" if cmd_opts.listen else "127.0.0.1", port=cmd_opts.port if cmd_opts.port else 7861)
 
 

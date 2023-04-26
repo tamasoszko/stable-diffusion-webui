@@ -347,6 +347,8 @@ def start():
     import webui
     if '--nowebui' in sys.argv:
         webui.api_only()
+    elif '--install-only' in sys.argv:
+        webui.api_only(skip_launch=True)
     else:
         webui.webui()
 
