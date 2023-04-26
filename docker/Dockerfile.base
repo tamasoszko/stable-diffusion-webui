@@ -1,0 +1,27 @@
+FROM pytorch/pytorch:1.13.1-cuda11.6-cudnn8-runtime as base
+
+RUN apt update && apt upgrade -y
+RUN apt install -y \
+	build-essential \ 
+	zlib1g-dev \
+	libncurses5-dev \
+	libgdbm-dev \
+	libnss3-dev \
+	libssl-dev \
+	libreadline-dev \
+	libffi-dev \
+	libsqlite3-dev \
+	wget \
+	lzma \
+	liblzma-dev \
+	libbz2-dev \
+	git \
+	ffmpeg \
+	libsm6 \
+	libxext6
+
+RUN mkdir -p /home/install
+WORKDIR /home/install
+
+CMD ["echo", "-=DONE=-]
+
